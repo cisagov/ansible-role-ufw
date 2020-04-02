@@ -6,7 +6,12 @@
     name:
       - ufw
 
-- name: Disable UFW
+- name: Enable the UFW service
   service:
     name: ufw
-    enabled: no
+    enabled: yes
+
+- name: Configure the UFW service
+  ufw:
+    logging: "{{ logging }}"
+    state: "{{ state }}"
