@@ -12,7 +12,13 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 ).get_hosts("all")
 
 
-@pytest.mark.parametrize("x", [True])
-def test_packages(host, x):
-    """Run a dummy test, just to show what one would look like."""
-    assert x
+@pytest.mark.parametrize("pkg", ["ufw"])
+def test_packages(host, pkg):
+    """Test that the appropriate packages were installed."""
+    assert host.package(pkg).is_installed
+
+
+@pytest.mark.parametrize("svc", ["ufw"])
+def test_services(host, svc):
+    """Test that the expected services are not enabled."""
+    assert not host.service(svc).is_enabled
