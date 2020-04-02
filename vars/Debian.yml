@@ -1,0 +1,7 @@
+---
+# vars file for Debian
+
+# The packages to install for UFW
+ufw_package_names:
+  - procps
+  - ufw

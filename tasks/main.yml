@@ -1,10 +1,32 @@
 ---
 # tasks file for ufw
 
+- name: Load var file with package names based on the OS type
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+        # The OS family and distribution for Kali is "Kali GNU/Linux",
+        # which is not an allowable file name in Linux due to the
+        # slash.  We will allow Kali to fall through and use the
+        # Debian vars file.
+        - Debian.yml
+      paths:
+        - "{{ role_path }}/vars"
+
 - name: Install ufw
   package:
-    name:
-      - ufw
+    name: "{{ ufw_package_names }}"
+
+# Unless you do this, systemd can sometimes get confused when you try
+# to enable a service you just installed
+- name: Systemd daemon-reload
+  systemd:
+    daemon_reload: true
+  when:
+    - ansible_service_mgr == "systemd"
 
 - name: Enable the UFW service
   service:
