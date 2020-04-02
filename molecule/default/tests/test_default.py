@@ -20,5 +20,5 @@ def test_packages(host, pkg):
 
 @pytest.mark.parametrize("svc", ["ufw"])
 def test_services(host, svc):
-    """Test that the expected services are not enabled."""
-    assert not host.service(svc).is_enabled
+    """Test that the expected services are enabled."""
+    assert host.service(svc).is_enabled
