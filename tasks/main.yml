@@ -1,2 +1,12 @@
 ---
-# tasks file for skeleton
+# tasks file for ufw
+
+- name: Install ufw
+  package:
+    name:
+      - ufw
+
+- name: Disable UFW
+  service:
+    name: ufw
+    enabled: no

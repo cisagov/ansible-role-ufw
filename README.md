@@ -4,13 +4,9 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-ufw.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-ufw/alerts/)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-ufw.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-ufw/context:python)
 
-This is a skeleton project that can be used to quickly get a new
-[cisagov](https://github.com/cisagov) Ansible role GitHub project
-started.  This skeleton project contains
-[licensing information](LICENSE), as well as
-[pre-commit hooks](https://pre-commit.com) and
-[GitHub Actions](https://github.com/features/actions) configurations
-appropriate for an Ansible role.
+An Ansible role for installing [Uncomplicated
+Firewall](https://wiki.ubuntu.com/UncomplicatedFirewall?action=show&redirect=UbuntuFirewall)
+(UFW).
 
 ## Requirements ##
 
@@ -33,7 +29,7 @@ Here's how to use it in a playbook:
   become: yes
   become_method: sudo
   roles:
-    - skeleton
+    - ufw
 ```
 
 ## Contributing ##
@@ -56,4 +52,4 @@ with this waiver of copyright interest.
 
 ## Author Information ##
 
-First Last - <first.last@trio.dhs.gov>
+Shane Frasier - <jeremy.frasier@trio.dhs.gov>
