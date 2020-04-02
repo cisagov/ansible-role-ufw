@@ -15,9 +15,9 @@ None.
 ## Role Variables ##
 
 * `logging` - The logging state for ufw.  See options
-  [here](https://docs.ansible.com/ansible/latest/modules/ufw_module.html#parameter-logging)
+  [here](https://docs.ansible.com/ansible/latest/modules/ufw_module.html#parameter-logging).
 * `state` - The state of ufw.  See options
-  [here](https://docs.ansible.com/ansible/latest/modules/ufw_module.html#parameter-state)
+  [here](https://docs.ansible.com/ansible/latest/modules/ufw_module.html#parameter-state).
 
 ## Dependencies ##
 
