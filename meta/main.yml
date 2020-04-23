@@ -26,10 +26,22 @@ galaxy_info:
         # can't use Fedora 30.
         # - 30
         - 31
-    - name: Ubuntu
-      versions:
-        - bionic
-        - xenial
+    # For reasons I haven't been able to discern, the Ubuntu molecule
+    # tests work fine locally but fail in GitHub Actions due to being
+    # unable to perform some iptables operations.  I would think this
+    # was due to some kernel module not being loaded in the underlying
+    # host instance, except that the non-Ubuntu platforms pass just
+    # fine in GitHub Actions.
+    #
+    # I've already spent too much time on this, and we don't require
+    # the Ubuntu support right now, so I will make the executive
+    # decision to remove Ubuntu support for now.  I created this issue
+    # to document the error:
+    # https://github.com/cisagov/ansible-role-ufw/issues/3
+    # - name: Ubuntu
+    #   versions:
+    #     - bionic
+    #     - xenial
   galaxy_tags:
     - ufw
 
