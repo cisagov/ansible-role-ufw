@@ -18,6 +18,11 @@
   package:
     name: "{{ ufw_package_names }}"
 
+- name: Configure UFW logging and state
+  ufw:
+    logging: "{{ logging }}"
+    state: "{{ state }}"
+
 # Unless you do this, systemd can sometimes get confused when you try
 # to enable a service you just installed
 - name: Systemd daemon-reload
@@ -30,8 +35,3 @@
   service:
     name: ufw
     enabled: yes
-
-- name: Configure the UFW service
-  ufw:
-    logging: "{{ logging }}"
-    state: "{{ state }}"
