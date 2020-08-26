@@ -3,6 +3,8 @@ galaxy_info:
   author: Shane Frasier
   description: Install Uncomplicated Firewall (UFW)
   company: CISA Cyber Assessments
+  galaxy_tags:
+    - ufw
   license: CC0
   min_ansible_version: 2.0
   platforms:
@@ -38,7 +40,6 @@ galaxy_info:
     #   versions:
     #     - bionic
     #     - xenial
-  galaxy_tags:
-    - ufw
+  role_name: ufw
 
 dependencies: []
