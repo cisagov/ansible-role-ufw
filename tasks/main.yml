@@ -23,6 +23,29 @@
     logging: "{{ logging }}"
     state: "{{ state }}"
 
+# The following updates to /etc/ufw/sysctl.conf are done to harden
+# the operating system and are good general security practices.
+#
+# Note that /etc/ufw/sysctl.conf values overwrite those in /etc/sysctl.conf
+# which is why these changes are made here, rather than in
+# https://github.com/cisagov/ansible-role-hardening
+- name: Log martian (impossible address) packets
+  lineinfile:
+    path: /etc/ufw/sysctl.conf
+    regexp: "(?i)[^\\s #]*{{ item.name }}"
+    line: "{{ item.name }}={{ item.value }}"
+    state: present
+  loop:
+    - { name: "net/ipv4/conf/all/log_martians", value: "1"}
+    - { name: "net/ipv4/conf/default/log_martians", value: "1"}
+
+- name: Enable TCP SYN cookies
+  lineinfile:
+    path: /etc/ufw/sysctl.conf
+    regexp: "(?i)[^\\s #]*net/ipv4/tcp_syncookies"
+    line: "net/ipv4/tcp_syncookies=1"
+    state: present
+
 # Unless you do this, systemd can sometimes get confused when you try
 # to enable a service you just installed
 - name: Systemd daemon-reload
