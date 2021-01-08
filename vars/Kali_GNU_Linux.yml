@@ -1,7 +1,0 @@
----
-# vars file for Kali
-
-# The packages to install for UFW.  These are the same as for Debian.
-ufw_package_names:
-  - procps
-  - ufw
