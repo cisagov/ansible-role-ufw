@@ -77,13 +77,6 @@ platforms:
   # remove Ubuntu support for now.  I created this issue to document
   # the error:
   # https://github.com/cisagov/ansible-role-ufw/issues/3
-  # - name: ubuntu_16_systemd
-  #   image: geerlingguy/docker-ubuntu1604-ansible:latest
-  #   privileged: yes
-  #   volumes:
-  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  #   command: /lib/systemd/systemd
-  #   pre_build_image: yes
   # - name: ubuntu_18_systemd
   #   image: geerlingguy/docker-ubuntu1804-ansible:latest
   #   privileged: yes

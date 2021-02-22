@@ -43,7 +43,6 @@ galaxy_info:
     # https://github.com/cisagov/ansible-role-ufw/issues/3
     # - name: Ubuntu
     #   versions:
-    #     - xenial
     #     - bionic
     #     - focal
   role_name: ufw
