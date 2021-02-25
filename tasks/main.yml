@@ -2,7 +2,7 @@
 # tasks file for ufw
 
 - name: Load var file with package names based on the OS type
-  include_vars: "{{ lookup('first_found', params) }}"
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
   vars:
     params:
       files:
@@ -13,11 +13,11 @@
         - "{{ role_path }}/vars"
 
 - name: Install ufw
-  package:
+  ansible.builtin.package:
     name: "{{ ufw_package_names }}"
 
 - name: Configure UFW logging and state
-  ufw:
+  community.general.ufw:
     logging: "{{ logging }}"
     state: "{{ state }}"
 
@@ -28,7 +28,7 @@
 # which is why these changes are made here, rather than in
 # https://github.com/cisagov/ansible-role-hardening
 - name: Log martian (impossible address) packets
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/ufw/sysctl.conf
     regexp: "(?i)[^\\s #]*{{ item.name }}"
     line: "{{ item.name }}={{ item.value }}"
@@ -38,7 +38,7 @@
     - { name: "net/ipv4/conf/default/log_martians", value: "1"}
 
 - name: Enable TCP SYN cookies
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/ufw/sysctl.conf
     regexp: "(?i)[^\\s #]*net/ipv4/tcp_syncookies"
     line: "net/ipv4/tcp_syncookies=1"
@@ -47,12 +47,12 @@
 # Unless you do this, systemd can sometimes get confused when you try
 # to enable a service you just installed
 - name: Systemd daemon-reload
-  systemd:
+  ansible.builtin.systemd:
     daemon_reload: true
   when:
     - ansible_service_mgr == "systemd"
 
 - name: Enable the UFW service
-  service:
+  ansible.builtin.service:
     name: ufw
     enabled: yes
