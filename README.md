@@ -19,6 +19,13 @@ None.
 - `state` - The state of ufw.  See options
   [here](https://docs.ansible.com/ansible/latest/modules/ufw_module.html#parameter-state).
 
+<!--
+| Variable | Description | Default | Required |
+|----------|-------------|---------|----------|
+| optional_variable | Describe its purpose. | `default_value` | No |
+| required_variable | Describe its purpose. | n/a | Yes |
+-->
+
 ## Dependencies ##
 
 None.
