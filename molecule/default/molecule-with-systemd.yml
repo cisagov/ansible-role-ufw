@@ -65,6 +65,7 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     command: /lib/systemd/systemd
     pre_build_image: yes
+<<<<<<< HEAD
   # For reasons I haven't been able to discern, the Ubuntu molecule
   # tests work fine locally but fail in GitHub Actions due to being
   # unable to perform some iptables operations.  I would think this
@@ -91,6 +92,29 @@ platforms:
   #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
   #   command: /lib/systemd/systemd
   #   pre_build_image: yes
+=======
+  - name: fedora34_systemd
+    image: geerlingguy/docker-fedora34-ansible:latest
+    privileged: yes
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    command: /lib/systemd/systemd
+    pre_build_image: yes
+  - name: ubuntu_18_systemd
+    image: geerlingguy/docker-ubuntu1804-ansible:latest
+    privileged: yes
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    command: /lib/systemd/systemd
+    pre_build_image: yes
+  - name: ubuntu_20_systemd
+    image: geerlingguy/docker-ubuntu2004-ansible:latest
+    privileged: yes
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    command: /lib/systemd/systemd
+    pre_build_image: yes
+>>>>>>> e29f8faf7dfd7724cff57bd48d882d164a6491ec
 provisioner:
   name: ansible
   inventory:

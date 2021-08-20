@@ -29,6 +29,7 @@ galaxy_info:
       versions:
         - 32
         - 33
+<<<<<<< HEAD
     # For reasons I haven't been able to discern, the Ubuntu molecule
     # tests work fine locally but fail in GitHub Actions due to being
     # unable to perform some iptables operations.  I would think this
@@ -46,5 +47,13 @@ galaxy_info:
     #     - bionic
     #     - focal
   role_name: ufw
+=======
+        - 34
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
+  role_name: skeleton
+>>>>>>> e29f8faf7dfd7724cff57bd48d882d164a6491ec
 
 dependencies: []
