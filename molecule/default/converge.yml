@@ -1,5 +1,7 @@
 ---
 - name: Converge
   hosts: all
-  roles:
-    - role: ansible-role-ufw
+  tasks:
+    - name: Include ansible-role-ufw
+      ansible.builtin.include_role:
+        name: ansible-role-ufw
