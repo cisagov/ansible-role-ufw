@@ -22,3 +22,15 @@ def test_packages(host, pkg):
 def test_services(host, svc):
     """Test that the expected services are enabled."""
     assert host.service(svc).is_enabled
+
+
+def test_kali_ufw_unit_file(host):
+    """Test that the Kali ufw.service unit file was patched correctly."""
+    if host.system_info.distribution in [
+        "kali",
+    ]:
+        f = host.file("/usr/lib/systemd/system/ufw.service")
+        assert f.exists
+        assert f.is_file
+        assert not f.contains(r"^Wants=network-pre\.target$")
+        assert f.contains(r"^DefaultDependencies=no$")

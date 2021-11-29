@@ -44,6 +44,26 @@
     line: "net/ipv4/tcp_syncookies=1"
     state: present
 
+# The ufw systemd unit file in Kali Linux currently introduces a
+# dependency cycle that causes the cloud-init service not to run at
+# boot even if enabled.  (systemd refuses to run cloud-init.service in
+# order to break the cycle.)  Therefore we have to make a few fixes
+# here.
+- name: Fix buggy lines in Kali ufw.service unit file
+  block:
+    - name: Remove buggy Wants line in Kali ufw.service unit file
+      ansible.builtin.lineinfile:
+        line: Wants=network-pre.target
+        path: /usr/lib/systemd/system/ufw.service
+        state: absent
+    - name: Add DefaultDependencies line in Kali ufw.service unit file
+      ansible.builtin.lineinfile:
+        insertbefore: ^Before=network-pre\.target$
+        line: DefaultDependencies=no
+        path: /usr/lib/systemd/system/ufw.service
+  when: ansible_distribution == "Kali"
+
+
 # Unless you do this, systemd can sometimes get confused when you try
 # to enable a service you just installed
 - name: Systemd daemon-reload
