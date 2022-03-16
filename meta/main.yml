@@ -29,9 +29,8 @@ galaxy_info:
         - bookworm
     - name: Fedora
       versions:
-        - 32
-        - 33
         - 34
+        - 35
     # For reasons I haven't been able to discern, the Ubuntu molecule
     # tests work fine locally but fail in GitHub Actions due to being
     # unable to perform some iptables operations.  I would think this
