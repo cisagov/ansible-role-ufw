@@ -1,8 +1,7 @@
 # ansible-role-ufw #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-ufw/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-ufw/actions)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/ansible-role-ufw.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-ufw/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/ansible-role-ufw.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/ansible-role-ufw/context:python)
+[![CodeQL](https://github.com/cisagov/ansible-role-ufw/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-ufw/actions/workflows/codeql-analysis.yml)
 
 An Ansible role for installing [Uncomplicated
 Firewall](https://wiki.ubuntu.com/UncomplicatedFirewall?action=show&redirect=UbuntuFirewall)
@@ -31,8 +30,10 @@ Here's how to use it in a playbook:
 - hosts: all
   become: yes
   become_method: sudo
-  roles:
-    - ufw
+  tasks:
+    - name: Install ufw
+      ansible.builtin.include_role:
+        name: ufw
 ```
 
 ## Contributing ##
