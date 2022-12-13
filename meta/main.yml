@@ -15,9 +15,9 @@ galaxy_info:
   namespace: cisagov
   platforms:
     # Amazon Linux does not appear to offer a ufw package
-    - name: Amazon Linux 2
-      versions:
-        - any
+    # - name: Amazon Linux 2
+    #   versions:
+    #     - any
     - name: Debian
       versions:
         - stretch
