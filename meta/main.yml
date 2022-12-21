@@ -11,13 +11,13 @@ galaxy_info:
   # OS family.  This simplifies a lot of things for roles that support
   # Kali Linux, so it makes sense to force the installation of Ansible
   # 2.10 or newer.
-  min_ansible_version: 2.10
+  min_ansible_version: "2.10"
   namespace: cisagov
   platforms:
     # Amazon Linux does not appear to offer a ufw package
-    # - name: Amazon
+    # - name: Amazon Linux 2
     #   versions:
-    #     - 2
+    #     - any
     - name: Debian
       versions:
         - stretch
@@ -29,8 +29,9 @@ galaxy_info:
         - bookworm
     - name: Fedora
       versions:
-        - 34
-        - 35
+        - "35"
+        - "36"
+        - "37"
     # For reasons I haven't been able to discern, the Ubuntu molecule
     # tests work fine locally but fail in GitHub Actions due to being
     # unable to perform some iptables operations.  I would think this
@@ -47,6 +48,7 @@ galaxy_info:
     #   versions:
     #     - bionic
     #     - focal
+    #     - jammy
   role_name: ufw
 
 dependencies: []
