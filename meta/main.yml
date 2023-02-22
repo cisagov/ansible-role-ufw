@@ -1,8 +1,9 @@
 ---
+dependencies: []
 galaxy_info:
   author: Shane Frasier
-  description: Install Uncomplicated Firewall (UFW)
   company: CISA Cyber Assessments
+  description: Install Uncomplicated Firewall (UFW)
   galaxy_tags:
     - ufw
   license: CC0
@@ -29,7 +30,6 @@ galaxy_info:
         - bookworm
     - name: Fedora
       versions:
-        - "35"
         - "36"
         - "37"
     # For reasons I haven't been able to discern, the Ubuntu molecule
@@ -50,5 +50,3 @@ galaxy_info:
     #     - focal
     #     - jammy
   role_name: ufw
-
-dependencies: []
