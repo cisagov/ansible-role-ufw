@@ -1,6 +1,4 @@
 ---
-# tasks file for ufw
-
 - name: Load var file with package names based on the OS type
   ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
   vars:
@@ -18,8 +16,8 @@
 
 - name: Configure UFW logging and state
   community.general.ufw:
-    logging: "{{ logging }}"
-    state: "{{ state }}"
+    logging: "{{ ufw_logging }}"
+    state: "{{ ufw_state }}"
 
 # The following updates to /etc/ufw/sysctl.conf are done to harden
 # the operating system and are good general security practices.
