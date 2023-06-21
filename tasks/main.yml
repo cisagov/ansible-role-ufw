@@ -50,6 +50,7 @@
 # order to break the cycle.)  Therefore we have to make a few fixes
 # here.
 - name: Fix buggy lines in Kali ufw.service unit file
+  when: ansible_distribution == "Kali"
   block:
     - name: Remove buggy Wants line in Kali ufw.service unit file
       ansible.builtin.lineinfile:
@@ -61,7 +62,6 @@
         insertbefore: ^Before=network-pre\.target$
         line: DefaultDependencies=no
         path: /usr/lib/systemd/system/ufw.service
-  when: ansible_distribution == "Kali"
 
 
 # Unless you do this, systemd can sometimes get confused when you try
