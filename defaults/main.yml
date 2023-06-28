@@ -1,13 +1,11 @@
 ---
-# defaults file for ansible-role-ufw
-
 # Logging state for ufw.  See options here:
 # https://docs.ansible.com/ansible/latest/modules/ufw_module.html#parameter-logging
 #
 # I use quotes here because without them the word on denotes a boolean
 # value.
-logging: "on"
+ufw_logging: "on"
 
 # The state of ufw.  See options here:
 # https://docs.ansible.com/ansible/latest/modules/ufw_module.html#parameter-state
-state: enabled
+ufw_state: enabled
