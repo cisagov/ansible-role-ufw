@@ -1,0 +1,12 @@
+---
+# Note that dependencies listed here are made available to the role
+# but _are not_ automatically installed.  Role variables cannot be
+# specified here.
+#
+# Note that by using the `collections` keyword and turning this file
+# into a map we can no longer use the `dependencies` keyword in
+# meta/main.yml.
+#
+# See also cisagov/skeleton-ansible-role#153.
+collections:
+  - community.general
