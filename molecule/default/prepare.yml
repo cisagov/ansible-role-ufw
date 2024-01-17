@@ -14,6 +14,7 @@
     - name: Group hosts by OS distribution
       ansible.builtin.group_by:
         key: os_{{ ansible_distribution }}
+
 - name: Wait for systemd to complete initialization (Fedora)
   hosts: os_Fedora
   tasks:
@@ -32,3 +33,13 @@
 
 - name: Import upgrade playbook
   ansible.builtin.import_playbook: upgrade.yml
+
+- name: Install kmod to provide modprobe executable
+  hosts: all
+  tasks:
+    # Some of our Docker containers seem to be missing modprobe, which
+    # is required to manipulate UFW.
+    - name: Install kmod to provide modprobe executable
+      ansible.builtin.package:
+        name:
+          - kmod
