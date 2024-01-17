@@ -14,6 +14,10 @@
   ansible.builtin.package:
     name: "{{ ufw_package_names }}"
 
+- name: Reload the SystemD daemon
+  ansible.builtin.systemd:
+    daemon_reload: true
+
 - name: Configure UFW logging and state
   community.general.ufw:
     logging: "{{ ufw_logging }}"
