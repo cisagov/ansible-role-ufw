@@ -18,9 +18,26 @@
   ansible.builtin.command:
     cmd: systemctl status ufw.service
   changed_when: false
+  failed_when: false
   register: ufw_status
 
 - name: Debug
+  ansible.builtin.debug:
+    msg: "{{ ufw_status.stdout_lines }}"
+
+- name: Restart UFW service
+  ansible.builtin.service:
+    name: ufw
+    state: restarted
+
+- name: Inspect the status of the UFW service 2
+  ansible.builtin.command:
+    cmd: systemctl status ufw.service
+  changed_when: false
+  failed_when: false
+  register: ufw_status
+
+- name: Debug 2
   ansible.builtin.debug:
     msg: "{{ ufw_status.stdout_lines }}"
 
