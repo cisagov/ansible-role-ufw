@@ -10,7 +10,7 @@
       paths:
         - "{{ role_path }}/vars"
 
-- name: Install ufw
+- name: Install UFW
   ansible.builtin.package:
     name: "{{ ufw_package_names }}"
 
