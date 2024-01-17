@@ -14,9 +14,15 @@
   ansible.builtin.package:
     name: "{{ ufw_package_names }}"
 
-- name: Reload the SystemD daemon
-  ansible.builtin.systemd:
-    daemon_reload: true
+- name: Inspect the status of the UFW service
+  ansible.builtin.command:
+    cmd: systemctl status ufw.service
+  changed_when: false
+  register: ufw_status
+
+- name: Debug
+  ansible.builtin.debug:
+    msg: "{{ ufw_status.stdout_lines }}"
 
 - name: Configure UFW logging and state
   community.general.ufw:
