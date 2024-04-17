@@ -49,9 +49,9 @@ galaxy_info:
     # decision to remove Ubuntu support for now.  I created this issue
     # to document the error:
     # https://github.com/cisagov/ansible-role-ufw/issues/3
-    # - name: Ubuntu
-    #   versions:
-    #     - focal
-    #     - jammy
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
   role_name: ufw
   standalone: true

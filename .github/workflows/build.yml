@@ -182,8 +182,8 @@ jobs:
           - kali-systemd
           - fedora38-systemd
           - fedora39-systemd
-          # - ubuntu-20-systemd
-          # - ubuntu-22-systemd
+          - ubuntu-20-systemd
+          - ubuntu-22-systemd
         scenario:
           - default
     steps:

@@ -89,24 +89,24 @@ platforms:
   # remove Ubuntu support for now.  I created this issue to document
   # the error:
   # https://github.com/cisagov/ansible-role-ufw/issues/3
-  # - cgroupns_mode: host
-  #   command: /lib/systemd/systemd
-  #   image: docker.io/geerlingguy/docker-ubuntu2004-ansible:latest
-  #   name: ubuntu-20-systemd
-  #   platform: amd64
-  #   pre_build_image: true
-  #   privileged: true
-  #   volumes:
-  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  # - cgroupns_mode: host
-  #   command: /lib/systemd/systemd
-  #   image: docker.io/geerlingguy/docker-ubuntu2204-ansible:latest
-  #   name: ubuntu-22-systemd
-  #   platform: amd64
-  #   pre_build_image: true
-  #   privileged: true
-  #   volumes:
-  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/geerlingguy/docker-ubuntu2004-ansible:latest
+    name: ubuntu-20-systemd
+    platform: amd64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/geerlingguy/docker-ubuntu2204-ansible:latest
+    name: ubuntu-22-systemd
+    platform: amd64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
 scenario:
   name: default
 verifier:
