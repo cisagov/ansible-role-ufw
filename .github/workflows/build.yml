@@ -180,9 +180,11 @@ jobs:
           - debian12-systemd
           - debian13-systemd
           - kali-systemd
-          - fedora38-systemd
-          - fedora39-systemd
-          - ubuntu-20-systemd
+          # These platforms currently fail in GitHub Actions but pass
+          # locally.  See issue #3 for more details.
+          # - fedora38-systemd
+          # - fedora39-systemd
+          # - ubuntu-20-systemd
           - ubuntu-22-systemd
         scenario:
           - default
