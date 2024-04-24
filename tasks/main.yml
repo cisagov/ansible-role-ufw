@@ -73,4 +73,4 @@
 - name: Enable the UFW service
   ansible.builtin.service:
     name: ufw
-    enabled: yes
+    enabled: true
