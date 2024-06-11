@@ -8,8 +8,8 @@ Firewall](https://wiki.ubuntu.com/UncomplicatedFirewall?action=show&redirect=Ubu
 (UFW).
 
 > [!NOTE]
-> We cannot currently test *any* ARM64 platforms under `qemu` because
-> [`qemu` cannot currently support
+> We cannot currently test *any* ARM64 platforms under QEMU because
+> [QEMU cannot currently support
 > `iptables`](https://github.com/multiarch/qemu-user-static/issues/191).
 
 ## Requirements ##
