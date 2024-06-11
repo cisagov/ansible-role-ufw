@@ -61,16 +61,10 @@
         line: DefaultDependencies=no
         path: /usr/lib/systemd/system/ufw.service
 
-
-# Unless you do this, systemd can sometimes get confused when you try
-# to enable a service you just installed
 - name: Systemd daemon-reload
   ansible.builtin.systemd:
+    # Unless you do this, systemd can sometimes get confused when you
+    # try to enable a service you just installed.
     daemon_reload: true
-  when:
-    - ansible_service_mgr == "systemd"
-
-- name: Enable the UFW service
-  ansible.builtin.service:
-    name: ufw
     enabled: true
+    name: ufw
