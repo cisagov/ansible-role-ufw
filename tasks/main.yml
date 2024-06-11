@@ -27,9 +27,9 @@
 # https://github.com/cisagov/ansible-role-hardening
 - name: Log martian (impossible address) packets
   ansible.builtin.lineinfile:
+    line: "{{ item.name }}={{ item.value }}"
     path: /etc/ufw/sysctl.conf
     regexp: "(?i)[^\\s #]*{{ item.name }}"
-    line: "{{ item.name }}={{ item.value }}"
     state: present
   loop:
     - { name: "net/ipv4/conf/all/log_martians", value: "1"}
@@ -37,9 +37,9 @@
 
 - name: Enable TCP SYN cookies
   ansible.builtin.lineinfile:
+    line: "net/ipv4/tcp_syncookies=1"
     path: /etc/ufw/sysctl.conf
     regexp: "(?i)[^\\s #]*net/ipv4/tcp_syncookies"
-    line: "net/ipv4/tcp_syncookies=1"
     state: present
 
 - name: Systemd daemon-reload
