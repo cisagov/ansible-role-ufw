@@ -11,7 +11,7 @@ galaxy_info:
   description: Install Uncomplicated Firewall (UFW)
   galaxy_tags:
     - ufw
-  license: CC0
+  license: CC0-1.0
   # With the release of version 2.10, Ansible finally correctly
   # identifies Kali Linux as being the Kali distribution of the Debian
   # OS family.  This simplifies a lot of things for roles that support
@@ -44,8 +44,8 @@ galaxy_info:
     # https://github.com/cisagov/ansible-role-ufw/issues/3
     # - name: Fedora
     #   versions:
-    #     - "38"
     #     - "39"
+    #     - "40"
     - name: Kali
       versions:
         - "2023"
@@ -65,5 +65,6 @@ galaxy_info:
         # https://github.com/cisagov/ansible-role-ufw/issues/3
         # - focal
         - jammy
+        - noble
   role_name: ufw
   standalone: true

@@ -27,9 +27,9 @@
 # https://github.com/cisagov/ansible-role-hardening
 - name: Log martian (impossible address) packets
   ansible.builtin.lineinfile:
+    line: "{{ item.name }}={{ item.value }}"
     path: /etc/ufw/sysctl.conf
     regexp: "(?i)[^\\s #]*{{ item.name }}"
-    line: "{{ item.name }}={{ item.value }}"
     state: present
   loop:
     - { name: "net/ipv4/conf/all/log_martians", value: "1"}
@@ -37,40 +37,15 @@
 
 - name: Enable TCP SYN cookies
   ansible.builtin.lineinfile:
+    line: "net/ipv4/tcp_syncookies=1"
     path: /etc/ufw/sysctl.conf
     regexp: "(?i)[^\\s #]*net/ipv4/tcp_syncookies"
-    line: "net/ipv4/tcp_syncookies=1"
     state: present
 
-# The ufw systemd unit file in Kali Linux currently introduces a
-# dependency cycle that causes the cloud-init service not to run at
-# boot even if enabled.  (systemd refuses to run cloud-init.service in
-# order to break the cycle.)  Therefore we have to make a few fixes
-# here.
-- name: Fix buggy lines in Kali ufw.service unit file
-  when: ansible_distribution == "Kali"
-  block:
-    - name: Remove buggy Wants line in Kali ufw.service unit file
-      ansible.builtin.lineinfile:
-        line: Wants=network-pre.target
-        path: /usr/lib/systemd/system/ufw.service
-        state: absent
-    - name: Add DefaultDependencies line in Kali ufw.service unit file
-      ansible.builtin.lineinfile:
-        insertbefore: ^Before=network-pre\.target$
-        line: DefaultDependencies=no
-        path: /usr/lib/systemd/system/ufw.service
-
-
-# Unless you do this, systemd can sometimes get confused when you try
-# to enable a service you just installed
 - name: Systemd daemon-reload
-  ansible.builtin.systemd:
+  ansible.builtin.systemd_service:
+    # Unless you do this, systemd can sometimes get confused when you
+    # try to enable a service you just installed.
     daemon_reload: true
-  when:
-    - ansible_service_mgr == "systemd"
-
-- name: Enable the UFW service
-  ansible.builtin.service:
-    name: ufw
     enabled: true
+    name: ufw
