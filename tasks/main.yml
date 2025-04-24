@@ -32,8 +32,10 @@
     regexp: "(?i)[^\\s #]*{{ item.name }}"
     state: present
   loop:
-    - {name: net/ipv4/conf/all/log_martians, value: "1"}
-    - {name: net/ipv4/conf/default/log_martians, value: "1"}
+    - name: net/ipv4/conf/all/log_martians
+      value: "1"
+    - name: net/ipv4/conf/default/log_martians
+      value: "1"
 
 - name: Enable TCP SYN cookies
   ansible.builtin.lineinfile:
