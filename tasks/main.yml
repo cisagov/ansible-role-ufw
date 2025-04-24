@@ -22,27 +22,25 @@
 # The following updates to /etc/ufw/sysctl.conf are done to harden
 # the operating system and are good general security practices.
 #
-# Note that /etc/ufw/sysctl.conf values overwrite those in /etc/sysctl.conf
-# which is why these changes are made here, rather than in
-# https://github.com/cisagov/ansible-role-hardening
+# Note that /etc/ufw/sysctl.conf values override those in
+# /etc/sysctl.conf which is why these changes are made here, rather
+# than in https://github.com/cisagov/ansible-role-hardening.
 - name: Log martian (impossible address) packets
-  ansible.builtin.lineinfile:
-    line: "{{ item.name }}={{ item.value }}"
-    path: /etc/ufw/sysctl.conf
-    regexp: "(?i)[^\\s #]*{{ item.name }}"
-    state: present
+  ansible.posix.sysctl:
+    name: "{{ item.name }}"
+    sysctl_file: /etc/ufw/sysctl.conf
+    value: "{{ item.value }}"
   loop:
-    - name: net/ipv4/conf/all/log_martians
-      value: "1"
-    - name: net/ipv4/conf/default/log_martians
-      value: "1"
+    - name: net.ipv4.conf.all.log_martians
+      value: 1
+    - name: net.ipv4.conf.default.log_martians
+      value: 1
 
 - name: Enable TCP SYN cookies
-  ansible.builtin.lineinfile:
-    line: net/ipv4/tcp_syncookies=1
-    path: /etc/ufw/sysctl.conf
-    regexp: "(?i)[^\\s #]*net/ipv4/tcp_syncookies"
-    state: present
+  ansible.posix.sysctl:
+    name: net.ipv4.tcp_syncookies
+    sysctl_file: /etc/ufw/sysctl.conf
+    value: 1
 
 - name: Systemd daemon-reload
   ansible.builtin.systemd_service:
