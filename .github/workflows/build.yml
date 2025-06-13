@@ -227,13 +227,9 @@ jobs:
           - debian13-systemd
           # These platforms currently fail in GitHub Actions but pass
           # locally.  See issue #3 for more details.
-          # - fedora39-systemd
-          # - fedora40-systemd
           # - fedora41-systemd
+          # - fedora42-systemd
           - kali-systemd
-          # These platforms currently fail in GitHub Actions but pass
-          # locally.  See issue #3 for more details.
-          # - ubuntu-20-systemd
           - ubuntu-22-systemd
           - ubuntu-24-systemd
         scenario:
