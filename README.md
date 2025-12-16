@@ -1,6 +1,7 @@
 # ansible-role-ufw #
 
 [![GitHub Build Status](https://github.com/cisagov/ansible-role-ufw/workflows/build/badge.svg)](https://github.com/cisagov/ansible-role-ufw/actions)
+[![License](https://img.shields.io/github/license/cisagov/ansible-role-ufw)](https://spdx.org/licenses/)
 [![CodeQL](https://github.com/cisagov/ansible-role-ufw/workflows/CodeQL/badge.svg)](https://github.com/cisagov/ansible-role-ufw/actions/workflows/codeql-analysis.yml)
 
 An Ansible role for installing [Uncomplicated
