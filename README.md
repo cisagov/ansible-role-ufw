@@ -15,7 +15,7 @@ None.
 ## Role Variables ##
 
 | Variable | Description | Default | Required |
-|----------|-------------|---------|----------|
+| -------- | ----------- | ------- | -------- |
 | ufw_logging | The logging state for ufw.  See [options](https://docs.ansible.com/ansible/latest/modules/ufw_module.html#parameter-logging).  Quotes are needed around this value because the words `on` and `off` denote boolean values in Ansible. | `"on"` | No |
 | ufw_state | The state of ufw.  See [options](https://docs.ansible.com/ansible/latest/modules/ufw_module.html#parameter-state). | `enabled` | No |
 
